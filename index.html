@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0f1117">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,7 +26,11 @@
   --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
-#app{display:flex;flex-direction:column;height:100vh;max-width:480px;margin:0 auto;position:relative;overflow:hidden}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden}
+@supports(padding-bottom:env(safe-area-inset-bottom)){
+  .nav{padding-bottom:calc(10px + env(safe-area-inset-bottom))!important;}
+  #app{height:calc(100vh + env(safe-area-inset-bottom));height:calc(100dvh + env(safe-area-inset-bottom));}
+}
 
 /* Header */
 .header{padding:52px 20px 16px;background:var(--bg);position:relative;flex-shrink:0}
@@ -49,7 +53,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 .bal-stat-value.dn{color:var(--red)}
 
 /* Nav tabs */
-.nav{display:flex;background:var(--bg2);border-top:1px solid var(--border);padding:6px 8px 10px;flex-shrink:0;position:relative;z-index:10}
+.nav{display:flex;background:var(--bg2);border-top:1px solid var(--border);padding:6px 8px 10px;flex-shrink:0;position:relative;z-index:10;padding-bottom:max(10px,env(safe-area-inset-bottom,10px))}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:var(--radius-xs);border:none;background:none;cursor:pointer;transition:all 0.2s;color:var(--text3)}
 .nav-item.active{color:var(--accent)}
 .nav-item-icon{font-size:20px;line-height:1}
